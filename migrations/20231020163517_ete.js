@@ -18,6 +18,11 @@ exports.up = function(knex) {
         tablo.integer("product_amount");
         tablo.integer("product_unit");
         tablo.integer("companies_id").notNullable().references("companies_id").inTable("Companies").onUpdate("CASCADE").onDelete("CASCADE");
+    }).createTable("Users" , (tablo) => {
+        tablo.increments("user_id");
+        tablo.string("fullname");
+        tablo.string("email").notNullable().unique();
+        tablo.string("password").notNullable();
     })
     )
 };
@@ -27,5 +32,6 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
+    return knex.schema.dropTableIfExists("Users").dropTableIfExists("Products").dropSchemaIfExists("Companies");
   
 };
