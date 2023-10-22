@@ -12,15 +12,16 @@ exports.seed = async function(knex) {
         product_category: "1",
         product_amount: 20,
         product_unit: 50,
-        company_id:1
-      },
+        company_id:1,
+        product_status:"Live"      },
       {
         product_id: 2,
         product_name: "Panel 10x10",
         product_category: "2",
         product_amount: 20,
         product_unit: 50,
-        company_id:2
+        company_id:2,
+        product_status:"Live"
       },
       {
         product_id: 3,
@@ -28,7 +29,8 @@ exports.seed = async function(knex) {
         product_category: "3",
         product_amount: 20,
         product_unit: 50,
-        company_id:3
+        company_id:3,
+        product_status:"Draft"
       },
     ]);
   };
