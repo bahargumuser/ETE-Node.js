@@ -5,11 +5,11 @@
 exports.up = function(knex) {
   return( knex.schema 
     .createTable("Companies" , (tablo) => {
-        tablo.increments("companies_id");
+        tablo.increments("company_id");
         tablo.string("company_name").notNullable();
         tablo.integer("company_legal_number");
         tablo.string("incorporation_country");
-        table.string("website_url");
+        tablo.string("website_url");
     })
     .createTable("Products", (tablo) => {
         tablo.increments("product_id");
@@ -17,8 +17,9 @@ exports.up = function(knex) {
         tablo.string("product_category"); 
         tablo.integer("product_amount");
         tablo.integer("product_unit");
-        tablo.integer("companies_id").notNullable().references("companies_id").inTable("Companies").onUpdate("CASCADE").onDelete("CASCADE");
-    }).createTable("Users" , (tablo) => {
+        tablo.integer("company_id").notNullable().references("company_id").inTable("Companies").onUpdate("CASCADE").onDelete("CASCADE");
+    })
+    .createTable("Users" , (tablo) => {
         tablo.increments("user_id");
         tablo.string("fullname");
         tablo.string("email").notNullable().unique();
@@ -32,6 +33,7 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists("Users").dropTableIfExists("Products").dropSchemaIfExists("Companies");
-  
+    return knex.schema.dropTableIfExists("Users")
+    .dropTableIfExists("Products")
+    .dropTableIfExists("Companies"); 
 };
