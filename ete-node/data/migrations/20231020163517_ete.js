@@ -10,6 +10,7 @@ exports.up = function(knex) {
         tablo.integer("company_legal_number");
         tablo.string("incorporation_country");
         tablo.string("website_url");
+        tablo.string("company_status");
     })
     .createTable("Products", (tablo) => {
         tablo.increments("product_id");
@@ -17,6 +18,7 @@ exports.up = function(knex) {
         tablo.string("product_category"); 
         tablo.integer("product_amount");
         tablo.integer("product_unit");
+        tablo.string("product_status");
         tablo.integer("company_id").notNullable().references("company_id").inTable("Companies").onUpdate("CASCADE").onDelete("CASCADE");
     })
     .createTable("Users" , (tablo) => {
