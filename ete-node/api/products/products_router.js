@@ -19,7 +19,7 @@ router.get("/",async (req, res, next) => {
         product_amount: req.body.product_amount,
         product_unit: req.body.product_unit,
         product_status: req.body.product_status,
-        companies_id: req.body.companies_id,
+        company_id: req.body.company_id,
         };
         const add = insertProducts(model);
         res.status(201).json({message: "Cong New Product :)", add});

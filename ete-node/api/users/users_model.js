@@ -5,12 +5,17 @@ const insertUser = async (input) => {
     return "New User :)"
 }
 const findUser = async (input) => {
-    await db("Users").where("user_id", input.user_id)
-    return "That's Products"
+    return await db("Users").where("email", input.email).first();
+
 }
+const findIdUser = async (input) => {
+    return await db("Users").where("user_id", input.user_id).first();
+
+}
+
 const deleteUser = async (input) => {
     return await db("Users").where("user_id", input.user_id).del()
 }
-module.exports = {
+module.exports = {findIdUser,
     insertUser, findUser, deleteUser
 }

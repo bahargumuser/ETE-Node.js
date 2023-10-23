@@ -2,7 +2,7 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const utils = require("../../secret/utils");
-const { findUser, insertUser, deleteUser } = require("./users_model");
+const { findUser, insertUser, deleteUser,findIdUser } = require("./users_model");
 const { emailIsValid, passwordIsValid, conflictEmail, userIsExist } = require("./users_middleware");
 
 router.get("/", async (req, res, next) => {
@@ -53,3 +53,4 @@ router.delete("/",userIsExist, async (req, res, next) => {
 
 
 module.exports = router;
+ 
