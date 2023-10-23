@@ -1,7 +1,7 @@
 const db = require("../../data/db-config");
 
 const insertNewCompanies = async (input) => {
-    await db("Companies")
+    await db("Companies").insert(input)
     return "New Companies Add :)"
 }
 const findCompany = async (input) => {

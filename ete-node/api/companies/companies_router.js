@@ -18,7 +18,7 @@ router.post("/", async (req,res, next) => {
             company_legal_number: req.body.company_legal_number,
             incorporation_country: req.body.incorporation_country,
             website_url: req.body.website_url,
-            company_status:req.body.company
+            company_status:req.body.company_status
         }
         const add = insertNewCompanies(model);
         res.status(201).json({message: "Cong New Company :)", add});
@@ -48,7 +48,7 @@ router.post("/update", companyIsExist , async (req,res, next) => {
 router.delete("/", companyIsExist, async (req,res, next) => {
     try {
         const deleteC = deleteCompany(req.body);
-        res.status(401).json({message: "See You Next Time :')", deleteC})
+        res.status(201).json({message: "See You Next Time :')", deleteC})
     } catch (error) {
         next(error);
     }
